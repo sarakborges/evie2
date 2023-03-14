@@ -1,1 +1,1 @@
-export const cons = []
+export { slugify } from './Slugify'

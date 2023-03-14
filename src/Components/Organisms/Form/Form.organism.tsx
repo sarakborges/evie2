@@ -1,5 +1,6 @@
 import { ChangeEvent, FC, FormEvent, useEffect } from 'react'
 
+import { slugify } from '@/Utils/Functions'
 import { FormItemProps } from '@/Utils/Props'
 
 import { ButtonAtom, TextAtom } from '@/Components/Atoms'
@@ -38,7 +39,8 @@ export const FormOrganism: FC<FormOrganismProps> = ({
           fieldItem.REQUIRED &&
           !formState.form
             .find((formItem) => formItem.id === fieldItem.ID)
-            ?.value.trim()
+            ?.value.trim() &&
+          !replaceText(fieldItem.DEFAULT_VALUE || '')?.trim()
       )
     ) {
       const newRegisterForm = formState.form.map((formItem) => {
@@ -116,6 +118,46 @@ export const FormOrganism: FC<FormOrganismProps> = ({
     advanceStep()
   }
 
+  const replaceText = (str: string) => {
+    const matchFunction = str.match(/\{.*\}\[.*\]/g)
+
+    matchFunction?.forEach((strMatch) => {
+      if (matchFunction.toString().match(/\{slug\}/g)?.length) {
+        const index = strMatch.replace(/\{slug\}\[|\]/g, '')
+
+        if (index.includes('|')) {
+          const indexes = index.split('|')
+
+          indexes.every((indexItem) => {
+            const val = slugify(getValue(indexItem))
+
+            if (val) {
+              str = str.replace(strMatch, slugify(val))
+              return false
+            }
+
+            return true
+          })
+
+          return
+        }
+
+        const val = slugify(getValue(index))
+        str = str.replace(strMatch, val)
+      }
+    })
+
+    const matchText = str.match(/\[.*\]/g)
+
+    matchText?.forEach((strMatch) => {
+      const index = strMatch.replace(/\[|\]/g, '')
+      const val = getValue(index)
+      str = str.replace(strMatch, val)
+    })
+
+    return str
+  }
+
   useEffect(() => {
     const newForm: FormItemProps[] = []
 
@@ -136,7 +178,7 @@ export const FormOrganism: FC<FormOrganismProps> = ({
     <form {...props} onSubmit={handleSubmit}>
       {!!form.STEPS[step].TEXT && (
         <TextAtom fs="24px" fw={400} lh={1.4} fc="formTextColor">
-          {form.STEPS[step].TEXT || ''}
+          {replaceText(form.STEPS[step].TEXT || '')}
         </TextAtom>
       )}
 
@@ -147,14 +189,13 @@ export const FormOrganism: FC<FormOrganismProps> = ({
               key={registerFormItem.ID}
               id={registerFormItem.ID}
               type={registerFormItem.TYPE}
-              label={registerFormItem.LABEL}
-              placeholder={registerFormItem.PLACEHOLDER}
-              helpText={registerFormItem.HELP_TEXT || ''}
-              warning={getWarning(registerFormItem.ID)}
+              label={replaceText(registerFormItem.LABEL)}
+              placeholder={replaceText(registerFormItem.PLACEHOLDER)}
+              helpText={replaceText(registerFormItem.HELP_TEXT || '')}
+              warning={replaceText(getWarning(registerFormItem.ID))}
               value={
                 getValue(registerFormItem.ID) ||
-                registerFormItem.DEFAULT_VALUE ||
-                ''
+                replaceText(registerFormItem.DEFAULT_VALUE || '')
               }
               options={registerFormItem?.OPTIONS || []}
               onChange={handleChange}
@@ -163,13 +204,13 @@ export const FormOrganism: FC<FormOrganismProps> = ({
         })}
 
       <Styled.Buttons>
-        {step > 0 && form.STEPS[step].RETURN_TEXT && (
+        {step === form.STEPS.length - 1 && form.STEPS[step].SUBMIT_TEXT && (
           <ButtonAtom
+            type="submit"
             primary={buttonStyles === 'primary'}
             secondary={buttonStyles === 'secondary'}
-            onClick={returnStep}
           >
-            {form.STEPS[step].RETURN_TEXT}
+            {form.STEPS[step].SUBMIT_TEXT}
           </ButtonAtom>
         )}
 
@@ -183,13 +224,13 @@ export const FormOrganism: FC<FormOrganismProps> = ({
           </ButtonAtom>
         )}
 
-        {step === form.STEPS.length - 1 && form.STEPS[step].SUBMIT_TEXT && (
+        {step > 0 && form.STEPS[step].RETURN_TEXT && (
           <ButtonAtom
-            type="submit"
             primary={buttonStyles === 'primary'}
             secondary={buttonStyles === 'secondary'}
+            onClick={returnStep}
           >
-            {form.STEPS[step].SUBMIT_TEXT}
+            {form.STEPS[step].RETURN_TEXT}
           </ButtonAtom>
         )}
       </Styled.Buttons>

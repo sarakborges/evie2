@@ -1,4 +1,4 @@
-import { LoginPage } from '@/Components/Pages'
+import { LoginPage, RegisterPage } from '@/Components/Pages'
 
 export const ROUTES = new Map()
 
@@ -11,5 +11,5 @@ ROUTES.set('LOGIN', {
 ROUTES.set('REGISTER', {
   PATH: '/register',
   TITLE: ' - Register',
-  ELEMENT: <LoginPage />
+  ELEMENT: <RegisterPage />
 })

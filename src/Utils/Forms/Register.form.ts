@@ -1,11 +1,12 @@
 import { GenericFormStepsProps } from '@/Utils/Props'
+import { SITE_TITLE } from '../Texts'
 
 export const REGISTER_FORM: GenericFormStepsProps = {
   ERROR: `All required fields need to be filled before we can advance.`,
 
   STEPS: [
     {
-      TEXT: `Welcome to!
+      TEXT: `Welcome to ${SITE_TITLE}!
       
       To create your account, we need you to tell us a bit about yourself. Don't worry, it won't take long.`,
 
@@ -32,10 +33,9 @@ export const REGISTER_FORM: GenericFormStepsProps = {
           TYPE: `select`,
           LABEL: `Your pronouns`,
           PLACEHOLDER: `The way you identify yourself`,
-          OPTIONS: [],
+          OPTIONS: ['He/him', 'She/her', 'They/them'],
           REQUIRED: true,
-          REQUIRED_ERROR: `You need to fill this before we can advance.`,
-          HELP_TEXT: `If you haven't identified yourself with any of those, please talk to us. We want to adapt and improve!`
+          REQUIRED_ERROR: `You need to fill this before we can advance.`
         }
       ]
     },
