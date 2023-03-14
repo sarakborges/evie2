@@ -5,23 +5,21 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { ROUTES } from '@/Utils/Constants'
 import { AppProvider } from '@/Contexts'
 
-import { LoginPage } from '@/Components/Pages'
-
 import * as Styled from '@/Assets/Styles/Global'
-
-const router = createBrowserRouter([
-  {
-    path: ROUTES.LOGIN.PATH,
-    element: <LoginPage />
-  }
-])
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Styled.GlobalStyle />
 
     <AppProvider>
-      <RouterProvider router={router} />
+      <RouterProvider
+        router={createBrowserRouter(
+          [...ROUTES.values()].map((routeItem) => ({
+            path: routeItem.PATH,
+            element: routeItem.ELEMENT
+          }))
+        )}
+      />
     </AppProvider>
   </React.StrictMode>
 )

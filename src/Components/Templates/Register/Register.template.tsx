@@ -10,10 +10,10 @@ import { TextAtom } from '@/Components/Atoms'
 import { FormOrganism } from '@/Components/Organisms'
 import { NonAuthedLayout } from '@/Components/Layouts'
 
-import * as Styled from './Login.style'
+import * as Styled from './Register.style'
 
-export const LoginTemplate: FC = () => {
-  const [loginFormState, setLoginFormState] = useState<GenericFormProps>({
+export const RegisterTemplate: FC = () => {
+  const [loginFormState, setRegisterFormState] = useState<GenericFormProps>({
     step: 0,
     form: [
       {
@@ -30,7 +30,7 @@ export const LoginTemplate: FC = () => {
     ]
   })
 
-  const handleLoginSubmit = () => {}
+  const handleRegisterSubmit = () => {}
 
   useEffect(() => {
     document.title = `${SITE_TITLE}${ROUTES.get('LOGIN').TITLE}`
@@ -38,12 +38,12 @@ export const LoginTemplate: FC = () => {
 
   return (
     <NonAuthedLayout>
-      <Styled.LoginTemplate>
+      <Styled.RegisterTemplate>
         <FormOrganism
           form={LOGIN_FORM}
           formState={loginFormState}
-          setFormState={setLoginFormState}
-          onSubmit={handleLoginSubmit}
+          setFormState={setRegisterFormState}
+          onSubmit={handleRegisterSubmit}
         />
 
         <TextAtom fs="12px" fc="formTextColor" lh={1.6} ta="center">
@@ -55,7 +55,7 @@ export const LoginTemplate: FC = () => {
 
           <>{LOGIN_TEXTS.TO_REGISTER_AFTER}</>
         </TextAtom>
-      </Styled.LoginTemplate>
+      </Styled.RegisterTemplate>
     </NonAuthedLayout>
   )
 }
