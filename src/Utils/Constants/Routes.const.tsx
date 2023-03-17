@@ -1,4 +1,4 @@
-import { LoginPage, RegisterPage } from '@/Components/Pages'
+import { LoginPage, RegisterPage, HomePage } from '@/Components/Pages'
 
 export const ROUTES = new Map()
 
@@ -12,4 +12,10 @@ ROUTES.set('REGISTER', {
   PATH: '/register',
   TITLE: ' - Register',
   ELEMENT: <RegisterPage />
+})
+
+ROUTES.set('HOME', {
+  PATH: '/',
+  TITLE: '',
+  ELEMENT: <HomePage />
 })

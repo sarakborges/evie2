@@ -1,8 +1,8 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { ROUTES } from '@/Utils/Constants'
-import { LOGIN_TEXTS, SITE_TITLE } from '@/Utils/Texts'
+import { LOGIN_TEXTS } from '@/Utils/Texts'
 import { LOGIN_FORM } from '@/Utils/Forms'
 import { GenericFormProps } from '@/Utils/Props'
 
@@ -31,10 +31,6 @@ export const LoginTemplate: FC = () => {
   })
 
   const handleLoginSubmit = () => {}
-
-  useEffect(() => {
-    document.title = `${SITE_TITLE}${ROUTES.get('LOGIN').TITLE}`
-  }, [])
 
   return (
     <NonAuthedLayout>
