@@ -25,13 +25,5 @@ export const Topbar = styled.div`
       fill: var(--topbarBackground);
       width: 24px;
     }
-
-    > img {
-      width: 40px;
-      aspect-ratio: 1;
-
-      object-fit: cover;
-      object-position: center;
-    }
   }
 `

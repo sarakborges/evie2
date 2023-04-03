@@ -10,6 +10,12 @@ export const GlobalStyle = createGlobalStyle`
     --background: hsl(var(--hue) 20% 15% / 100%);
     --text: hsl(var(--hue) 30% 90% / 100%);
 
+    --placeholderBg: linear-gradient(90deg,
+                                      hsl(var(--hue) 20% 85% / 100%),
+                                      hsl(var(--hue) 20% 75% / 100%),
+                                      hsl(var(--hue) 20% 85% / 100%)
+    );
+
     --topbarBackground: hsl(var(--hue) 40% 40% / 100%);
 
     --warningTextColor: hsl(20 70% 50% / 100%);

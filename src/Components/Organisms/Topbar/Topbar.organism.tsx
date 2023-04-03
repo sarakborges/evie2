@@ -5,7 +5,7 @@ import { UserProfileContext } from '@/Contexts'
 
 import { ROUTES } from '@/Utils/Constants'
 
-import { ButtonAtom, TextAtom } from '@/Components/Atoms'
+import { ButtonAtom, PictureAtom, TextAtom } from '@/Components/Atoms'
 
 import * as Styled from './Topbar.style'
 
@@ -26,7 +26,12 @@ export const TopbarOrganism: FC = () => {
       </TextAtom>
 
       <ButtonAtom transparent round nopad>
-        <img src={userProfileState.picture} alt={userProfileState.name} />
+        <PictureAtom
+          src={userProfileState.picture}
+          alt={userProfileState.name}
+          w={40}
+          squared
+        />
       </ButtonAtom>
     </Styled.Topbar>
   )
