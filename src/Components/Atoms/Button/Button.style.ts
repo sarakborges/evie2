@@ -1,8 +1,9 @@
 import styled, { css } from 'styled-components'
 
+import { ButtonAtomProps } from './Button.props'
+
 const PrimaryButton = css`
   background-color: var(--primaryButtonBackground);
-  border-radius: 8px;
 
   color: var(--primaryButtonTextColor);
 
@@ -13,9 +14,20 @@ const PrimaryButton = css`
   }
 `
 
+const SecondaryButton = css`
+  background-color: var(--secondaryButtonBackground);
+
+  color: var(--secondaryButtonTextColor);
+
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: var(--secondaryButtonHoverBackground);
+  }
+`
+
 const TransparentButton = css`
   background-color: transparent;
-  border-radius: 8px;
 
   color: var(--transparentButtonColor);
 
@@ -26,31 +38,23 @@ const TransparentButton = css`
   }
 `
 
-interface ButtonStyleProps {
-  primary?: boolean
-  secondary?: boolean
-  transparent?: boolean
-  round?: boolean
-}
-export const Button = styled.button<ButtonStyleProps>`
+export const Button = styled.button<ButtonAtomProps>`
   display: flex;
   place-content: center;
   place-items: center;
   gap: 16px;
 
-  padding: 8px;
+  padding: ${({ nopad }) => (nopad ? '0' : '8px')};
 
   border: 0;
-  border-radius: ${({ round }) => (round ? '50%' : '4px')};
+  border-radius: ${({ round }) => (round ? '50%' : '8px')};
 
   font-size: 12px;
   letter-spacing: inherit;
 
   cursor: pointer;
 
-  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-
   ${({ primary, secondary }) => (primary || !secondary) && PrimaryButton}
-  /* ${({ secondary }) => secondary && PrimaryButton} */
+  ${({ secondary }) => secondary && SecondaryButton}
   ${({ transparent }) => transparent && TransparentButton}
 `

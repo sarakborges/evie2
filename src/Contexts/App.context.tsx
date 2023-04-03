@@ -6,10 +6,10 @@ type AppProps = {}
 
 export const AppContext = createContext<{
   appState: AppProps
-  setAppState: Dispatch<any> | null
+  setAppState: Dispatch<any>
 }>({
   appState: { ...INITIAL_STATE },
-  setAppState: null
+  setAppState: () => {}
 })
 
 export const AppProvider: FC<{

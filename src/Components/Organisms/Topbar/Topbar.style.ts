@@ -1,19 +1,5 @@
 import styled from 'styled-components'
 
-export const AuthedLayout = styled.div`
-  --appBackground: hsl(var(--hue) 20% 95% / 100%);
-
-  display: flex;
-  flex-flow: column;
-
-  min-height: 100vh;
-  max-width: 100%;
-  width: 320px;
-  margin: auto;
-
-  background-color: var(--appBackground);
-`
-
 export const Topbar = styled.div`
   display: flex;
   place-items: center;
@@ -24,7 +10,15 @@ export const Topbar = styled.div`
 
   background-color: var(--topbarBackground);
 
+  > p {
+    max-width: 100%;
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+  }
+
   button {
+    min-width: 40px;
     overflow: hidden;
 
     > svg {

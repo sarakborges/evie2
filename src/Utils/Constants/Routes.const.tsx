@@ -1,3 +1,5 @@
+import { SITE_TITLE } from '@/Utils/Texts'
+
 import { LoginPage, RegisterPage, HomePage } from '@/Components/Pages'
 
 export const ROUTES = new Map()
@@ -17,5 +19,6 @@ ROUTES.set('REGISTER', {
 ROUTES.set('HOME', {
   PATH: '/',
   TITLE: '',
+  HEADER: 'Home',
   ELEMENT: <HomePage />
 })

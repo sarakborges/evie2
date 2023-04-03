@@ -8,15 +8,20 @@ export const GlobalStyle = createGlobalStyle`
     --hue: 280;
 
     --background: hsl(var(--hue) 20% 15% / 100%);
-    --text: hsl(var(--hue) 30% 80% / 100%);
+    --text: hsl(var(--hue) 30% 90% / 100%);
+
+    --topbarBackground: hsl(var(--hue) 40% 40% / 100%);
 
     --warningTextColor: hsl(20 70% 50% / 100%);
     --warningBgColor: hsl(20 70% 50% / 20%);
 
     --primaryButtonBackground: hsl(var(--hue) 35% 40% / 100%);
-    --primaryButtonBorder: hsl(var(--hue) 60% 60% / 100%);
     --primaryButtonTextColor: hsl(var(--hue) 30% 90% / 100%);
     --primaryButtonShadow: hsl(var(--hue) 30% 10% / 100%);
+
+    --secondaryButtonBackground: hsl(var(--hue) 30% 95% / 100%);
+    --secondaryButtonTextColor: hsl(var(--hue) 30% 90% / 100%);
+    --secondaryButtonHoverBackground: hsl(var(--hue) 30% 80% / 100%);
 
     --fontFamily: "Roboto", sans-serif;
   }

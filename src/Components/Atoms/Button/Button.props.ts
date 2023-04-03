@@ -5,4 +5,5 @@ export interface ButtonAtomProps extends ComponentPropsWithoutRef<'button'> {
   secondary?: boolean
   transparent?: boolean
   round?: boolean
+  nopad?: boolean
 }
