@@ -6,4 +6,5 @@ export type FieldMoleculeProps = {
   warning?: string
   options?: string[]
 } & ComponentPropsWithoutRef<'input'> &
-  ComponentPropsWithoutRef<'select'>
+  ComponentPropsWithoutRef<'select'> &
+  ComponentPropsWithoutRef<'textarea'>

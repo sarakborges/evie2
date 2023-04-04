@@ -16,6 +16,8 @@ export const GlobalStyle = createGlobalStyle`
                                       hsl(var(--hue) 20% 85% / 100%)
     );
 
+    --userProfileStoryBorder: hsl(135 65% 35% / 100%);
+
     --topbarBackground: hsl(var(--hue) 40% 40% / 100%);
 
     --warningTextColor: hsl(20 70% 50% / 100%);

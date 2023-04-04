@@ -3,27 +3,17 @@ import styled from 'styled-components'
 export const Topbar = styled.div`
   display: flex;
   place-items: center;
-  place-content: space-between;
-  gap: 16px;
 
-  padding: 16px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 99;
+
+  padding: 8px;
 
   background-color: var(--topbarBackground);
 
-  > p {
-    max-width: 100%;
-    overflow: hidden;
-
-    text-overflow: ellipsis;
-  }
-
-  button {
-    min-width: 40px;
-    overflow: hidden;
-
-    > svg {
-      fill: var(--topbarBackground);
-      width: 24px;
-    }
+  svg {
+    width: 24px;
   }
 `

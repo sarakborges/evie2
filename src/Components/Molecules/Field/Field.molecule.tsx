@@ -53,7 +53,9 @@ export const FieldMolecule: FC<FieldMoleculeProps> = ({
         </select>
       )}
 
-      {type !== 'select' && type !== 'password' && (
+      {type === 'textarea' && <textarea {...props} />}
+
+      {!['select', 'password', 'textarea'].includes(type as string) && (
         <input {...props} type={type || 'text'} />
       )}
 

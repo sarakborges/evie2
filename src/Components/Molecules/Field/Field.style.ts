@@ -22,7 +22,7 @@ export const FieldWrapper = styled.div`
     }
   }
 
-  > :is(input, select) {
+  > :is(input, select, textarea) {
     height: 32px;
 
     background-color: transparent;
@@ -45,6 +45,18 @@ export const FieldWrapper = styled.div`
 
     > option {
       color: var(--formTextColor);
+    }
+  }
+
+  > :is(textarea) {
+    height: 120px;
+    resize: none;
+    padding: 8px;
+
+    background-color: var(--formTextareaBackgroundColor);
+
+    &:focus {
+      background-color: var(--formTextareaFocusBackgroundColor);
     }
   }
 `

@@ -25,7 +25,9 @@ export const AuthedLayout: FC<{ children: ReactNode }> = ({ children }) => {
   }, [location])
 
   useEffect(() => {
-    setUserProfileState(ProfileMock)
+    setUserProfileState(
+      ProfileMock.find((profileItem) => profileItem.id === '1')
+    )
   }, [userState])
 
   return (
