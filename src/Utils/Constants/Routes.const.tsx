@@ -19,6 +19,11 @@ ROUTES.set('REGISTER', {
 ROUTES.set('HOME', {
   PATH: '/',
   TITLE: '',
-  HEADER: 'Home',
+  ELEMENT: <HomePage />
+})
+
+ROUTES.set('PROFILE', {
+  PATH: '/profile/:url',
+  TITLE: ' - :name',
   ELEMENT: <HomePage />
 })

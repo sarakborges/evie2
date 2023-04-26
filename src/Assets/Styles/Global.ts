@@ -9,6 +9,8 @@ export const GlobalStyle = createGlobalStyle`
 
     --background: hsl(var(--hue) 20% 15% / 100%);
     --text: hsl(var(--hue) 30% 90% / 100%);
+    --textWeak: hsl(var(--hue) 30% 65% / 100%);
+    --link: hsl(var(--hue) 40% 40% / 100%);
 
     --placeholderBg: linear-gradient(90deg,
                                       hsl(var(--hue) 20% 85% / 100%),

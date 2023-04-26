@@ -13,6 +13,7 @@ export const FieldMolecule: FC<FieldMoleculeProps> = ({
   label,
   warning,
   options,
+  small,
   ...props
 }) => {
   const { id, type, placeholder } = props
@@ -24,7 +25,7 @@ export const FieldMolecule: FC<FieldMoleculeProps> = ({
   }
 
   return (
-    <Styled.FieldWrapper>
+    <Styled.FieldWrapper small={small}>
       {warning && <Styled.Warning htmlFor={id}>{warning}</Styled.Warning>}
 
       {type === 'password' && (

@@ -32,9 +32,8 @@ export const HomeContent = styled.div`
   place-items: center;
   flex-flow: column;
 
-  max-height: calc(100vh - 68px);
-  min-height: calc(100vh - 68px);
-  padding: 16px 8px;
+  max-height: calc(100vh - 54px);
+  min-height: calc(100vh - 54px);
   overflow: hidden;
   overflow-y: scroll;
 `

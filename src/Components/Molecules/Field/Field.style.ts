@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 
-export const FieldWrapper = styled.div`
+interface FieldWrapperProps {
+  small?: boolean
+}
+export const FieldWrapper = styled.div<FieldWrapperProps>`
   display: flex;
   flex-flow: column-reverse;
   gap: 4px;
@@ -23,13 +26,13 @@ export const FieldWrapper = styled.div`
   }
 
   > :is(input, select, textarea) {
-    height: 32px;
+    height: ${({ small }) => (small ? '24px' : '32px')};
 
     background-color: transparent;
     border: 0;
     border-bottom: 1px solid var(--formFieldBorder);
 
-    font-size: 16px;
+    font-size: ${({ small }) => (small ? '12px' : '16px')};
     color: var(--formTextColor);
 
     transition: background-color 0.3s, border-color 0.3s;
